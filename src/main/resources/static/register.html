@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .el-table .warning-row {
+            background: oldlace;
+        }
+
+        .el-table .success-row {
+            background: #f0f9eb;
+        }
+    </style>
+
+</head>
+<body>
+<div id="app">
+
+    <!--搜索表单-->
+    <el-form :inline="true" :model="user" class="demo-form-inline">
+
+
+        <el-form-item >
+            <el-input v-model="user.username" placeholder="账号"></el-input>
+        </el-form-item>
+
+        <el-form-item >
+            <el-input v-model="user.password" placeholder="密码" ></el-input>
+        </el-form-item>
+
+        <el-form-item>
+            <el-button type="primary" @click="onSubmit">注册</el-button>
+        </el-form-item>
+
+    </el-form>
+
+
+</div>
+
+
+<script src="js/vue.js"></script>
+<script src="element-ui/lib/index.js"></script>
+<link rel="stylesheet" href="element-ui/lib/theme-chalk/index.css">
+
+<script src="js/axios-0.18.0.js"></script>
+
+<script>
+    new Vue({
+        el: "#app",
+
+        methods: {
+
+
+            // 查询方法
+            onSubmit() {
+                axios({
+                    method: "post",
+                    url: "http://localhost/users/register",
+                    data: this.user
+                }).then(res=>{
+                    if (res.data.code =="30001"){
+                        //用户名已存在
+                        this.$message({
+                            message: res.data.msg,
+                            type: 'error'
+                        });
+                    }
+                    else {
+                        this.$message({
+                            message: res.data.msg,
+                            type: 'success'
+                        });
+                        document.location.href = "http://localhost/login.html"
+                    }
+                })
+
+            }
+
+
+        },
+
+        data() {
+            return {
+                user: {
+                    username: '',
+                    password: '',
+                    id: ""
+                }
+            }
+        }
+    })
+
+</script>
+
+</body>
+</html>
