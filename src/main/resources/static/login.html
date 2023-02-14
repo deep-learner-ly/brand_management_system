@@ -23,12 +23,12 @@
     <!--搜索表单-->
     <el-card shadow="never" class="login-card">
         <el-form :model="user" class="demo-form-inline">
-            <el-form-item label="账号">
-                <el-input v-model="user.username" placeholder="账号"></el-input>
+            <el-form-item >
+                <el-input prefix-icon="el-icon-user" v-model="user.username" placeholder="请输入账号"></el-input>
             </el-form-item>
 
-            <el-form-item label="密码">
-                <el-input v-model="user.password" placeholder="密码"></el-input>
+            <el-form-item >
+                <el-input  prefix-icon="el-icon-unlock" v-model="user.password" placeholder="请输入密码" show-password></el-input>
             </el-form-item>
 
             <el-form-item type="flex" justify="center">

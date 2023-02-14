@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.gege</groupId>
-    <artifactId>brand-case-spring</artifactId>
+    <artifactId>brand-management-system</artifactId>
     <version>0.0.4-SNAPSHOT</version>
     <name>brand-case-spring</name>
     <description>brand-case-spring</description>
